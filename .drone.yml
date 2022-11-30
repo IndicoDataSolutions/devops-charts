@@ -1,12 +1,12 @@
 kind: pipeline
 type: kubernetes
-name: devops-service
+name: devops-charts
 
 concurrency:
   limit: 1
 
 steps:
-  - name: push helm charts
+  - name: main build
     image: alpine/helm:3.9.0
     commands:
       - echo https://dl-cdn.alpinelinux.org/alpine/edge/community >> /etc/apk/repositories
@@ -31,7 +31,7 @@ steps:
         - tag
 
 
-  - name: push helm charts in development
+  - name: branch build
     image: alpine/helm:3.9.0
     commands:
       - echo https://dl-cdn.alpinelinux.org/alpine/edge/community >> /etc/apk/repositories
