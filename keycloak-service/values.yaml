@@ -10,7 +10,7 @@ image:
   registry: harbor.devops.indico.io/indico-devops
   name: devops-keycloak-service
   pullPolicy: IfNotPresent
-  tag: "9569d317" # added authorized accounts (Indico-Prod)
+  tag: "c14fff22" 
 
 imagePullSecrets:
   - name: harbor-pull-secret
