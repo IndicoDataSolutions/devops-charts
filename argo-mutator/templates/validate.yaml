@@ -1,0 +1,46 @@
+{{- if .Values.validate.create -}}
+kind: ValidatingWebhookConfiguration
+apiVersion: admissionregistration.k8s.io/v1
+metadata:
+  annotations:
+    cert-manager.io/inject-ca-from: {{ .Release.Namespace }}/{{ .Values.admissionController.certificateName }}
+  name: {{ include "argo-mutator.fullname" . }}-validating-webhook
+webhooks:
+  - name: {{ .Values.validate.serviceName }}.{{ .Release.Namespace }}.svc
+    namespaceSelector:
+      matchExpressions:
+        - {
+            key: "kubernetes.io/metadata.name",
+            operator: NotIn,
+            values: [{{- range .Values.validate.excludeNamespaces }}
+              {{ quote . -}},
+            {{ end }}
+            ]
+          }    
+        - {
+            key: "name",
+            operator: NotIn,
+            values: [{{- range .Values.mutate.excludeNamespaces }}
+              {{ quote . -}},
+            {{ end }}
+            ]
+          }  
+        - {
+            key: "field.cattle.io/projectId",
+            operator: DoesNotExist
+          }          
+
+    failurePolicy: Fail
+    rules:
+      - operations: ["CREATE", "UPDATE"]
+        apiGroups: ["*"]
+        apiVersions: ["*"]
+        resources: ["applications"]
+    clientConfig:
+      service:
+        namespace: {{ .Release.Namespace }}
+        name: {{ .Values.validate.serviceName }}
+        path: /validate
+    sideEffects: "None"
+    admissionReviewVersions: ["v1"]
+{{- end }}

@@ -1,0 +1,47 @@
+{{- if .Values.mutate.create -}}
+kind: MutatingWebhookConfiguration
+apiVersion: admissionregistration.k8s.io/v1
+metadata:
+  annotations:
+    cert-manager.io/inject-ca-from: {{ .Release.Namespace }}/{{ .Values.admissionController.certificateName }}
+  name: {{ include "argo-mutator.fullname" . }}-mutating-webhook
+webhooks:
+  - name: {{ .Values.mutate.serviceName }}.{{ .Release.Namespace }}.svc
+    namespaceSelector:
+      matchExpressions:
+        - {
+            key: "kubernetes.io/metadata.name",
+            operator: NotIn,
+            values: [{{- range .Values.mutate.excludeNamespaces }}
+              {{ quote . -}},
+            {{ end }}
+            ]
+          }
+        - {
+            key: "name",
+            operator: NotIn,
+            values: [{{- range .Values.mutate.excludeNamespaces }}
+              {{ quote . -}},
+            {{ end }}
+            ]
+          }          
+        - {
+            key: "field.cattle.io/projectId",
+            operator: DoesNotExist
+          }          
+
+    failurePolicy: Fail
+    rules:
+      - operations: ["CREATE", "UPDATE"]
+        apiGroups: ["*"]
+        apiVersions: ["*"]
+        resources: ["applications"]
+    clientConfig:
+      service:
+        namespace: {{ .Release.Namespace }}
+        name: {{ .Values.mutate.serviceName }}
+        path: /mutate
+    sideEffects: "None"
+    admissionReviewVersions: ["v1"]
+    timeoutSeconds: 5
+{{- end }}
