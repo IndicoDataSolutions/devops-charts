@@ -1,0 +1,17 @@
+{{- if .Values.clusterRole.create -}}
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: {{ .Values.clusterRole.name }}
+  labels:
+    {{- include "argo-mutator.labels" . | nindent 4 }}
+rules:
+  - apiGroups: ["*"]
+    resources: {{- range .Values.clusterRole.resources }}
+      - {{ quote . -}}
+    {{ end }}
+    verbs: {{- range .Values.clusterRole.verbs }}
+      - {{ quote . -}}
+    {{ end }}
+{{- end }}
+

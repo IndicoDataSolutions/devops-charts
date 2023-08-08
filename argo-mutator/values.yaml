@@ -18,6 +18,24 @@ imagePullSecrets:
 nameOverride: ""
 fullnameOverride: ""
 
+
+clusterRole:
+  create: true
+  name: "indico-openshift-adm"
+  resources:
+    [
+      "deployments",
+      "statefulsets",
+      "namespaces",
+      "quotas",
+      "secrets",
+      "rolebindings",
+      "configmaps",
+      "resourcequotas",
+    ]
+  verbs: ["get", "list", "watch", "create", "update", "patch", "delete"]
+
+
 validate:
   create: true
   serviceName: adm-argo-mutator-webhook

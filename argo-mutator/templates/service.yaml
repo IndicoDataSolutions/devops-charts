@@ -1,0 +1,15 @@
+{{- if .Values.service.create -}}
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ include "argo-mutator.fullname" . }}
+  labels: {{- include "argo-mutator.labels" . | nindent 4 }}
+spec:
+  type: {{ .Values.service.type }}
+  ports:
+    - port: {{ .Values.service.port }}
+      targetPort: 443
+      protocol: TCP
+      name: https
+  selector: {{- include "argo-mutator.selectorLabels" . | nindent 4 }}
+{{- end }}
