@@ -73,6 +73,7 @@ podSecurityContext:
   # fsGroup: 2000
 
 service:
+  create: true
   type: ClusterIP
   port: 443
 
