@@ -15,6 +15,6 @@ spec:
   duration: 87600h
   renewBefore: 720h
   issuerRef:
-    name: selfsigned-issuer-adm
+    name: selfsigned-issuer
     kind: ClusterIssuer
     group: cert-manager.io
