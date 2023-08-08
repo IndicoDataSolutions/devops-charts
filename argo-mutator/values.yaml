@@ -38,7 +38,7 @@ clusterRole:
 
 validate:
   create: true
-  serviceName: adm-argo-mutator-webhook
+  serviceName: awh-argo-mutator
   name: "argo-mutator-validate-webhook"
   excludeNamespaces:
     [
@@ -49,7 +49,7 @@ validate:
 
 mutate:
   create: true
-  serviceName: adm-argo-mutator-mutate
+  serviceName: awh-argo-mutator
   name: "argo-mutator-mutate-webhook"
   excludeNamespaces:
     [
