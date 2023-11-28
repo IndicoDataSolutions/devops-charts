@@ -1,0 +1,7 @@
+thanos:
+  enabled: false
+
+
+kube-prometheus-stack:
+  enabled: true
+
