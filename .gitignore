@@ -1,6 +1,7 @@
 .terraform*
 .andrey*
 vendor
+charts/
 dont_check_in*
 terraform.tfstate*
 module.kubeconfig

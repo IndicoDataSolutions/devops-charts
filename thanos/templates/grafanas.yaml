@@ -1,0 +1,17 @@
+apiVersion: grafana.integreatly.org/v1beta1
+kind: Grafana
+metadata:
+  labels:
+    dashboards: external-grafana
+  name: external-grafana
+  namespace: default
+spec:
+  external:
+    adminPassword:
+      key: GF_SECURITY_ADMIN_PASSWORD
+      name: grafana-admin-credentials
+    adminUser:
+      key: GF_SECURITY_ADMIN_USER
+      name: grafana-admin-credentials
+    url: https://thanos-grafana.devops.indico.io
+    

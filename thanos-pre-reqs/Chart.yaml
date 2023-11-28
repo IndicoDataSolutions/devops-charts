@@ -23,8 +23,13 @@ version: 0.1.0
 # It is recommended to use it with quotes.
 appVersion: "1.0.0"
 
-
+# helm upgrade -i grafana-operator oci://ghcr.io/grafana-operator/helm-charts/grafana-operator --version v5.4.2\n
 dependencies:
+  - name: grafana-operator
+    version: v5.4.2
+    repository: oci://ghcr.io/grafana-operator/helm-charts
+    condition: grafana-operator.enabled
+
   - name: vault-secrets-operator
     repository: https://helm.releases.hashicorp.com   
     version: 0.4.0

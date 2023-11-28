@@ -1,6 +1,9 @@
 dependencies:
+- name: grafana-operator
+  repository: oci://ghcr.io/grafana-operator/helm-charts
+  version: v5.4.2
 - name: vault-secrets-operator
   repository: https://helm.releases.hashicorp.com
   version: 0.4.0
-digest: sha256:26aef5f4229b3bd0db313dfc26cb3fe614537d4f8b3006d6940b5ab3280cbae5
-generated: "2023-11-28T15:47:48.527506-05:00"
+digest: sha256:86685ef0d2a09a718c18f5e46e27683012f97481b5844a7264949f7fe76c77e7
+generated: "2023-11-28T16:39:30.802556-05:00"
