@@ -52,6 +52,19 @@ data "aws_eks_cluster_auth" "thanos" {
   name = var.name
 }
 
+
+provider "kubernetes" {
+  host                   = data.aws_eks_cluster.thanos.endpoint
+  cluster_ca_certificate = base64decode(data.aws_eks_cluster.thanos.certificate_authority[0].data)
+  #token                  = module.cluster.kubernetes_token
+  exec {
+    api_version = "client.authentication.k8s.io/v1beta1"
+    args        = ["eks", "get-token", "--cluster-name", var.name]
+    command     = "aws"
+  }
+}
+
+
 provider "kubectl" {
   host                   = data.aws_eks_cluster.thanos.endpoint
   cluster_ca_certificate = base64decode(data.aws_eks_cluster.thanos.certificate_authority[0].data)
