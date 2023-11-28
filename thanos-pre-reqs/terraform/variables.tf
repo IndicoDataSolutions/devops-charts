@@ -1,4 +1,23 @@
 
+variable "aws_access_key" {
+  type        = string
+  description = "The AWS access key to use for deployment"
+  sensitive   = true
+}
+
+variable "aws_secret_key" {
+  type        = string
+  description = "The AWS secret key to use for deployment"
+  sensitive   = true
+}
+
+variable "default_tags" {
+  type        = map(string)
+  default     = null
+  description = "Default tags to add to each resource"
+}
+
+
 variable "vault_address" {
   type    = string
   default = "https://vault.devops.indico.io"
