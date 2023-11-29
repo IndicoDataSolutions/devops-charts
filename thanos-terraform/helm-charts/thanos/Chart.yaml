@@ -30,5 +30,5 @@ dependencies:
     condition: kube-prometheus-stack.enabled
   - name: thanos
     repository: https://charts.bitnami.com/bitnami
-    version: 12.16.1
+    version: 12.11.2
     condition: thanos.enabled
