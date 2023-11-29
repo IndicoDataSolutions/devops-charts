@@ -5,3 +5,7 @@ thanos:
 kube-prometheus-stack:
   enabled: true
 
+  grafana:
+    enabled: false
+
+
