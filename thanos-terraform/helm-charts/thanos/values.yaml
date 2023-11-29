@@ -13,6 +13,14 @@ grafana:
  
 thanos:
   enabled: true
-  
+
+ingress-nginx:
+  enabled: true
+  controller:
+    replicaCount: 3
+  rbac:
+    create: true
+
+
 
   
