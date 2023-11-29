@@ -9,6 +9,22 @@ kube-prometheus-stack:
     enabled: false
 
 grafana:
+  service:
+    annotations:
+      
+  ingress:
+    enabled: true
+    annotations:
+      cert-manager.io/cluster-issuer: zerossl
+    labels:
+      acme.cert-manager.io/dns01-solver: "true"
+    hosts:
+      - grafana.monitoring.us-east-2.indico-devops.indico.io
+    tls:
+      - secretName: t-grafana-tls
+        hosts:
+          - grafana.monitoring.us-east-2.indico-devops.indico.io
+
   admin:
     passwordKey: admin-password
     userKey: admin-user
