@@ -68,6 +68,16 @@ resource "helm_release" "thanos" {
 thanos:
   enabled: true
   existingObjstoreSecret: thanos-storage
+  query:
+    requests:
+      memory: 64Gi
+      cpu: 2
+
+    tolerations:
+      - effect: NoSchedule
+        key: indico.io/highmem
+        operator: Exists
+      
   storegateway:
     enabled: true
     sharded:
