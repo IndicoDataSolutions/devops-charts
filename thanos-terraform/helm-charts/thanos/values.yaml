@@ -13,10 +13,13 @@ grafana:
     passwordKey: admin-password
     userKey: admin-user
   datasources:
-   - name: Prometheus
-     type: prometheus
-     url: http://t-thanos-query:9090
-     access: proxy
+    datasources.yaml:
+      apiVersion: 1
+      datasources:
+      - name: Prometheus
+        type: prometheus
+        url: http://t-thanos-query:9090
+        access: proxy
 
 thanos:
   enabled: true
