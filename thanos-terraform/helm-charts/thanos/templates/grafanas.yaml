@@ -8,10 +8,10 @@ metadata:
 spec:
   external:
     adminPassword:
-      key: GF_SECURITY_ADMIN_PASSWORD
-      name: grafana-admin-credentials
+      key: admin-password
+      name: t-grafana
     adminUser:
-      key: GF_SECURITY_ADMIN_USER
-      name: grafana-admin-credentials
+      key: admin-user
+      name: t-grafana
     url: https://thanos-grafana.devops.indico.io
     
