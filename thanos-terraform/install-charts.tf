@@ -10,7 +10,6 @@ resource "helm_release" "thanos" {
   name              = "t"
   chart             = "thanos"
   repository        = "./helm-charts"
-  force_update      = true
   dependency_update = true
 }
 
