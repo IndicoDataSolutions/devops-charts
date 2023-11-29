@@ -11,7 +11,7 @@ kube-prometheus-stack:
 grafana:
   service:
     annotations:
-      
+      external-dns.alpha.kubernetes.io/hostname: grafana.monitoring.us-east-2.indico-devops.indico.io
   ingress:
     enabled: true
     annotations:
