@@ -99,9 +99,13 @@ thanos:
 
     sharded:
       enabled: true
+      hashPartitioning:
+        shards: 8
+
     persistence:
       enabled: true
       size: 500Gi
+
     args:
       - store
       - --log.level=info
