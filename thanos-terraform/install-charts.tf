@@ -40,6 +40,7 @@ grafana:
   ingress:
     enabled: true
     annotations:
+      kubernetes.io/ingress.class: nginx
       cert-manager.io/cluster-issuer: zerossl
       external-dns.alpha.kubernetes.io/hostname: grafana.monitoring.us-east-2.indico-devops.indico.io
     labels:
