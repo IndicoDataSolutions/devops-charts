@@ -1,7 +1,9 @@
 thanos:
-  enabled: false
-
-
+  enabled: true
+  existingObjstoreSecret: thanos-objstore-config
+  persistence:
+    size: 1000Gi
+    
 kube-prometheus-stack:
   enabled: true
 
