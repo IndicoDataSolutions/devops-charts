@@ -2,7 +2,7 @@ terraform {
   cloud {
     organization = "indico"
     workspaces {
-      name = "thanos-setup"
+      name = "thanos-monitoring-setup"
     }
   }
 }

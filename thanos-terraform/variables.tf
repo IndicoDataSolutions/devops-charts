@@ -35,7 +35,7 @@ variable "region" {
   default = "us-east-2"
 }
 variable "name" {
-  default = "thanos"
+  default = "monitoring"
 }
 
 variable "kubernetes_host" {
