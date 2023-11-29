@@ -28,7 +28,7 @@ vault-secrets-operator:
     enabled: true
     namespace: default
     method: kubernetes
-    mount: indico-devops-us-east-2-thanos
+    mount: indico-devops-us-east-2-monitoring
     kubernetes:
       role: vault-auth-role
       tokenAudiences: ["vault"]
