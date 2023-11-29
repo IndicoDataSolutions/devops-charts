@@ -32,23 +32,24 @@ thanos:
       - --http-address=0.0.0.0:10902
       - --data-dir=/data
       - --objstore.config-file=/conf/thanos_storage.yaml
-      
+
 grafana:
   service:
     annotations:
-      external-dns.alpha.kubernetes.io/hostname: grafana.monitoring.us-east-2.indico-devops.indico.io
+      external-dns.alpha.kubernetes.io/hostname: grafana-monitoring.us-east-2.indico-devops.indico.io
   ingress:
     enabled: true
     annotations:
       cert-manager.io/cluster-issuer: zerossl
+      external-dns.alpha.kubernetes.io/hostname: grafana-monitoring.us-east-2.indico-devops.indico.io
     labels:
       acme.cert-manager.io/dns01-solver: "true"
     hosts:
-      - grafana.monitoring.us-east-2.indico-devops.indico.io
+      - grafana-monitoring.us-east-2.indico-devops.indico.io
     tls:
       - secretName: t-grafana-tls
         hosts:
-          - grafana.monitoring.us-east-2.indico-devops.indico.io
+          - grafana-monitoring.us-east-2.indico-devops.indico.io
   admin:
     passwordKey: admin-password
     userKey: admin-user
