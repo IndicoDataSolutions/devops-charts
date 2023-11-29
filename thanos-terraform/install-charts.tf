@@ -84,6 +84,13 @@ thanos:
       
   storegateway:
     enabled: true
+    resources:
+      requests:
+        memory: 16Gi
+        cpu: 1000m
+    nodeSelector:
+      node_group: highmem-workers
+
     sharded:
       enabled: true
     persistence:
@@ -102,7 +109,7 @@ grafana:
   persistence:
     enabled: true
     size: 100Gi
-    
+
   nodeSelector:
     node_group: highmem-workers
   
