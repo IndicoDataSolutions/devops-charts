@@ -98,6 +98,19 @@ thanos:
       - --objstore.config-file=/conf/thanos_storage.yaml
 
 grafana:
+  nodeSelector:
+    node_group: highmem-workers
+  
+  resources:
+    requests:
+      memory: 64Gi
+      cpu: 2000m
+
+  tolerations:
+    - effect: NoSchedule
+      key: indico.io/highmem
+      operator: Exists
+
   service:
     annotations:
       external-dns.alpha.kubernetes.io/hostname: grafana.monitoring.us-east-2.indico-devops.indico.io
