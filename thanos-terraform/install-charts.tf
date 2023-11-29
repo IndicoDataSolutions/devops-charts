@@ -74,7 +74,7 @@ thanos:
       cpu: 2000m
     
     nodeSelector:
-      node_group: highmem
+      node_group: highmem-workers
 
     tolerations:
       - effect: NoSchedule
