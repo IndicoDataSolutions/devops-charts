@@ -36,20 +36,20 @@ thanos:
 grafana:
   service:
     annotations:
-      external-dns.alpha.kubernetes.io/hostname: grafana-monitoring.us-east-2.indico-devops.indico.io
+      external-dns.alpha.kubernetes.io/hostname: monitoring.us-east-2.indico-devops.indico.io
   ingress:
     enabled: true
     annotations:
       cert-manager.io/cluster-issuer: zerossl
-      external-dns.alpha.kubernetes.io/hostname: grafana-monitoring.us-east-2.indico-devops.indico.io
+      external-dns.alpha.kubernetes.io/hostname: monitoring.us-east-2.indico-devops.indico.io
     labels:
       acme.cert-manager.io/dns01-solver: "true"
     hosts:
-      - grafana-monitoring.us-east-2.indico-devops.indico.io
+      - monitoring.us-east-2.indico-devops.indico.io
     tls:
       - secretName: t-grafana-tls
         hosts:
-          - grafana-monitoring.us-east-2.indico-devops.indico.io
+          - monitoring.us-east-2.indico-devops.indico.io
   admin:
     passwordKey: admin-password
     userKey: admin-user
