@@ -99,6 +99,10 @@ thanos:
       - --objstore.config-file=/conf/thanos_storage.yaml
 
 grafana:
+  persistence:
+    enabled: true
+    size: 100Gi
+    
   nodeSelector:
     node_group: highmem-workers
   
