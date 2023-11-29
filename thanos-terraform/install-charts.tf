@@ -71,7 +71,7 @@ thanos:
   query:
     requests:
       memory: 64Gi
-      cpu: 2
+      cpu: 2000m
 
     tolerations:
       - effect: NoSchedule
