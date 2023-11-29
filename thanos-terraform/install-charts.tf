@@ -3,6 +3,57 @@ resource "helm_release" "thanos-pre-reqs" {
   chart             = "thanos-pre-reqs"
   repository        = "./helm-charts"
   dependency_update = true
+  values = [
+    <<EOF
+grafana-operator:
+  enabled: true
+
+vault-secrets-operator:
+  enabled: true
+
+  controller: 
+    manager:
+      resources:
+        limits:
+          cpu: 500m
+          memory: 512Mi
+        requests:
+          cpu: 10m
+          memory: 64Mi
+
+  controller: 
+    manager:
+      resources:
+        limits:
+          cpu: 500m
+          memory: 512Mi
+        requests:
+          cpu: 10m
+          memory: 64Mi
+
+  defaultAuthMethod:
+    enabled: true
+    namespace: default
+    method: kubernetes
+    mount: indico-devops-us-east-2-monitoring
+    kubernetes:
+      role: vault-auth-role
+      tokenAudiences: ["vault"]
+      serviceAccount: vault-auth
+
+  defaultVaultConnection:
+    enabled: true
+    address: https://vault.devops.indico.io
+    skipTLSVerify: false
+    spec:
+    template:
+      spec:
+        containers:
+        - name: manager
+          args:
+          - "--client-cache-persistence-model=direct-encrypted"
+  EOF
+  ]
 }
 
 resource "helm_release" "thanos" {
