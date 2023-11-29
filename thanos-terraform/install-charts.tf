@@ -84,11 +84,15 @@ thanos:
       
   storegateway:
     enabled: true
+    
     resources:
       requests:
-        memory: 32Gi
-        cpu: 1000m
-    
+        memory: 64Gi
+        cpu: 2000m
+      
+    nodeSelector:
+      node_group: highmem-workers
+
     sharded:
       enabled: true
       hashPartitioning:
