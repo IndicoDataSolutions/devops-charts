@@ -86,7 +86,7 @@ thanos:
     enabled: true
     resources:
       requests:
-        memory: 16Gi
+        memory: 64Gi
         cpu: 1000m
     nodeSelector:
       node_group: highmem-workers
