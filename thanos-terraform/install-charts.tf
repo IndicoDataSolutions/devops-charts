@@ -69,10 +69,11 @@ thanos:
   enabled: true
   existingObjstoreSecret: thanos-storage
   query:
-    requests:
-      memory: 64Gi
-      cpu: 2000m
-    
+    resources:
+      requests:
+        memory: 64Gi
+        cpu: 2000m
+      
     nodeSelector:
       node_group: highmem-workers
 
