@@ -1,9 +1,4 @@
-thanos:
-  enabled: true
-  existingObjstoreSecret: thanos-objstore-config
-  persistence:
-    size: 1000Gi
-    
+
 kube-prometheus-stack:
   enabled: true
 
@@ -12,3 +7,1178 @@ kube-prometheus-stack:
 
   grafana:
     enabled: false
+
+thanos:
+  enabled: true
+  auth:
+    basicAuthUsers: {}
+  bucketCacheConfig: ""
+  bucketweb:
+    affinity: {}
+    args: []
+    automountServiceAccountToken: true
+    autoscaling:
+      enabled: false
+      maxReplicas: ""
+      minReplicas: ""
+      targetCPU: ""
+      targetMemory: ""
+    command: []
+    containerSecurityContext:
+      allowPrivilegeEscalation: false
+      enabled: true
+      readOnlyRootFilesystem: true
+      runAsNonRoot: true
+      runAsUser: 1001
+    customLivenessProbe: {}
+    customReadinessProbe: {}
+    customStartupProbe: {}
+    dnsConfig: {}
+    dnsPolicy: ""
+    enabled: false
+    extraEnvVars: []
+    extraEnvVarsCM: ""
+    extraEnvVarsSecret: ""
+    extraFlags: []
+    extraVolumeMounts: []
+    extraVolumes: []
+    hostAliases: []
+    ingress:
+      annotations: {}
+      apiVersion: ""
+      enabled: false
+      extraHosts: []
+      extraRules: []
+      extraTls: []
+      hostname: thanos-bucketweb.local
+      ingressClassName: ""
+      path: /
+      pathType: ImplementationSpecific
+      secrets: []
+      selfSigned: false
+      tls: false
+    initContainers: []
+    lifecycleHooks: {}
+    livenessProbe:
+      enabled: true
+      failureThreshold: 6
+      initialDelaySeconds: 30
+      periodSeconds: 10
+      successThreshold: 1
+      timeoutSeconds: 30
+    logFormat: logfmt
+    logLevel: info
+    nodeAffinityPreset:
+      key: ""
+      type: ""
+      values: []
+    nodeSelector: {}
+    pdb:
+      create: false
+      maxUnavailable: ""
+      minAvailable: 1
+    podAffinityPreset: ""
+    podAnnotations: {}
+    podAntiAffinityPreset: soft
+    podLabels: {}
+    podSecurityContext:
+      enabled: true
+      fsGroup: 1001
+    priorityClassName: ""
+    readinessProbe:
+      enabled: true
+      failureThreshold: 6
+      initialDelaySeconds: 30
+      periodSeconds: 10
+      successThreshold: 1
+      timeoutSeconds: 30
+    refresh: 30m
+    replicaCount: 1
+    resources:
+      limits: {}
+      requests: {}
+    schedulerName: ""
+    service:
+      annotations: {}
+      clusterIP: ""
+      externalTrafficPolicy: Cluster
+      extraPorts: []
+      labelSelectorsOverride: {}
+      labels: {}
+      loadBalancerIP: ""
+      loadBalancerSourceRanges: []
+      nodePorts:
+        http: ""
+      ports:
+        http: 8080
+      type: ClusterIP
+    serviceAccount:
+      annotations: {}
+      automountServiceAccountToken: true
+      create: true
+      name: ""
+    sidecars: []
+    startupProbe:
+      enabled: false
+      failureThreshold: 15
+      initialDelaySeconds: 5
+      periodSeconds: 5
+      successThreshold: 1
+      timeoutSeconds: 1
+    timeout: 5m
+    tolerations: []
+    topologySpreadConstraints: []
+    updateStrategy:
+      type: RollingUpdate
+  clusterDomain: cluster.local
+  commonAnnotations: {}
+  commonLabels: {}
+  compactor:
+    affinity: {}
+    args: []
+    automountServiceAccountToken: true
+    command: []
+    consistencyDelay: 30m
+    containerSecurityContext:
+      allowPrivilegeEscalation: false
+      enabled: true
+      readOnlyRootFilesystem: true
+      runAsNonRoot: true
+      runAsUser: 1001
+    cronJob:
+      backoffLimit: ""
+      concurrencyPolicy: Forbid
+      enabled: false
+      failedJobsHistoryLimit: ""
+      schedule: 0 */6 * * *
+      startingDeadlineSeconds: ""
+      successfulJobsHistoryLimit: ""
+      suspend: ""
+      timeZone: ""
+    customLivenessProbe: {}
+    customReadinessProbe: {}
+    customStartupProbe: {}
+    dnsConfig: {}
+    dnsPolicy: ""
+    enabled: false
+    extraEnvVars: []
+    extraEnvVarsCM: ""
+    extraEnvVarsSecret: ""
+    extraFlags: []
+    extraVolumeMounts: []
+    extraVolumes: []
+    hostAliases: []
+    ingress:
+      annotations: {}
+      apiVersion: ""
+      enabled: false
+      extraHosts: []
+      extraRules: []
+      extraTls: []
+      hostname: thanos-compactor.local
+      ingressClassName: ""
+      path: /
+      pathType: ImplementationSpecific
+      secrets: []
+      selfSigned: false
+      tls: false
+    initContainers: []
+    lifecycleHooks: {}
+    livenessProbe:
+      enabled: true
+      failureThreshold: 6
+      initialDelaySeconds: 30
+      periodSeconds: 10
+      successThreshold: 1
+      timeoutSeconds: 30
+    logFormat: logfmt
+    logLevel: info
+    nodeAffinityPreset:
+      key: ""
+      type: ""
+      values: []
+    nodeSelector: {}
+    persistence:
+      accessModes:
+      - ReadWriteOnce
+      annotations: {}
+      enabled: true
+      existingClaim: ""
+      labels: {}
+      size: 1000Gi
+      storageClass: ""
+    podAffinityPreset: ""
+    podAnnotations: {}
+    podAntiAffinityPreset: soft
+    podLabels: {}
+    podSecurityContext:
+      enabled: true
+      fsGroup: 1001
+    priorityClassName: ""
+    readinessProbe:
+      enabled: true
+      failureThreshold: 6
+      initialDelaySeconds: 30
+      periodSeconds: 10
+      successThreshold: 1
+      timeoutSeconds: 30
+    resources:
+      limits: {}
+      requests: {}
+    restartPolicy: ""
+    retentionResolution1h: 10y
+    retentionResolution5m: 30d
+    retentionResolutionRaw: 30d
+    schedulerName: ""
+    service:
+      annotations: {}
+      clusterIP: ""
+      externalTrafficPolicy: Cluster
+      extraPorts: []
+      labelSelectorsOverride: {}
+      labels: {}
+      loadBalancerIP: ""
+      loadBalancerSourceRanges: []
+      nodePorts:
+        http: ""
+      ports:
+        http: 9090
+      type: ClusterIP
+    serviceAccount:
+      annotations: {}
+      automountServiceAccountToken: true
+      create: true
+      name: ""
+    sidecars: []
+    startupProbe:
+      enabled: false
+      failureThreshold: 15
+      initialDelaySeconds: 5
+      periodSeconds: 5
+      successThreshold: 1
+      timeoutSeconds: 1
+    tolerations: []
+    topologySpreadConstraints: []
+    updateStrategy:
+      type: Recreate
+  existingHttpConfigSecret: ""
+  existingObjstoreSecret: thanos-objstore-config
+  existingObjstoreSecretItems: []
+  extraDeploy: []
+  fullnameOverride: ""
+  global:
+    imagePullSecrets: []
+    imageRegistry: ""
+    storageClass: ""
+  httpConfig: ""
+  https:
+    autoGenerated: false
+    ca: ""
+    caFilename: ca.crt
+    cert: ""
+    certFilename: tls.crt
+    clientAuthType: ""
+    enabled: false
+    existingSecret: ""
+    key: ""
+    keyFilename: tls.key
+  image:
+    digest: ""
+    pullPolicy: IfNotPresent
+    pullSecrets: []
+    registry: docker.io
+    repository: bitnami/thanos
+    tag: 0.31.0-scratch-r12
+  indexCacheConfig: ""
+  kubeVersion: ""
+  metrics:
+    enabled: false
+    prometheusRule:
+      additionalLabels: {}
+      default:
+        create: false
+        disabled: {}
+        sidecarJobRegex: .*thanos-sidecar.*
+      enabled: false
+      groups: []
+      namespace: ""
+    serviceMonitor:
+      enabled: false
+      extraParameters: {}
+      interval: ""
+      jobLabel: ""
+      labels: {}
+      metricRelabelings: []
+      namespace: ""
+      relabelings: []
+      scrapeTimeout: ""
+      selector: {}
+  minio:
+    auth:
+      rootPassword: ""
+      rootUser: admin
+    defaultBuckets: thanos
+    enabled: false
+  nameOverride: ""
+  networkPolicy:
+    allowExternal: true
+    enabled: false
+    explicitNamespacesSelector: {}
+  query:
+    affinity: {}
+    args: []
+    automountServiceAccountToken: true
+    autoscaling:
+      enabled: false
+      maxReplicas: ""
+      minReplicas: ""
+      targetCPU: ""
+      targetMemory: ""
+    command: []
+    containerSecurityContext:
+      allowPrivilegeEscalation: false
+      enabled: true
+      readOnlyRootFilesystem: true
+      runAsNonRoot: true
+      runAsUser: 1001
+    customLivenessProbe: {}
+    customReadinessProbe: {}
+    customStartupProbe: {}
+    dnsConfig: {}
+    dnsDiscovery:
+      enabled: true
+      sidecarsNamespace: ""
+      sidecarsService: ""
+    dnsPolicy: ""
+    enabled: true
+    existingSDConfigmap: ""
+    extraEnvVars: []
+    extraEnvVarsCM: ""
+    extraEnvVarsSecret: ""
+    extraFlags:
+    - --query.auto-downsampling
+    extraVolumeMounts: []
+    extraVolumes: []
+    grpc:
+      client:
+        serverName: ""
+        tls:
+          autoGenerated: false
+          ca: ""
+          cert: ""
+          enabled: false
+          existingSecret: {}
+          key: ""
+      server:
+        tls:
+          autoGenerated: false
+          ca: ""
+          cert: ""
+          enabled: false
+          existingSecret: {}
+          key: ""
+    hostAliases: []
+    ingress:
+      annotations: {}
+      apiVersion: ""
+      enabled: false
+      extraHosts: []
+      extraRules: []
+      extraTls: []
+      grpc:
+        annotations: {}
+        apiVersion: ""
+        enabled: false
+        extraHosts: []
+        extraRules: []
+        extraTls: []
+        hostname: thanos-grpc.local
+        ingressClassName: ""
+        path: /
+        pathType: ImplementationSpecific
+        secrets: []
+        selfSigned: false
+        tls: false
+      hostname: thanos.local
+      ingressClassName: ""
+      path: /
+      pathType: ImplementationSpecific
+      secrets: []
+      selfSigned: false
+      tls: false
+    initContainers: []
+    lifecycleHooks: {}
+    livenessProbe:
+      enabled: true
+      failureThreshold: 6
+      initialDelaySeconds: 30
+      periodSeconds: 10
+      successThreshold: 1
+      timeoutSeconds: 30
+    logFormat: logfmt
+    logLevel: info
+    nodeAffinityPreset:
+      key: ""
+      type: ""
+      values: []
+    nodeSelector: {}
+    pdb:
+      create: false
+      maxUnavailable: ""
+      minAvailable: 1
+    podAffinityPreset: ""
+    podAnnotations: {}
+    podAntiAffinityPreset: soft
+    podAntiAffinityPresetTopologyKey: ""
+    podLabels: {}
+    podSecurityContext:
+      enabled: true
+      fsGroup: 1001
+    priorityClassName: ""
+    pspEnabled: false
+    rbac:
+      create: false
+      rules: []
+    readinessProbe:
+      enabled: true
+      failureThreshold: 6
+      initialDelaySeconds: 30
+      periodSeconds: 10
+      successThreshold: 1
+      timeoutSeconds: 30
+    replicaCount: 1
+    replicaLabel:
+    - replica
+    resources:
+      limits: {}
+      requests: {}
+    schedulerName: ""
+    sdConfig: ""
+    service:
+      additionalHeadless: false
+      annotations: {}
+      clusterIP: ""
+      externalTrafficPolicy: Cluster
+      extraPorts: []
+      headless:
+        annotations: {}
+      labelSelectorsOverride: {}
+      labels: {}
+      loadBalancerIP: ""
+      loadBalancerSourceRanges: []
+      nodePorts:
+        http: ""
+      ports:
+        http: 9090
+      type: ClusterIP
+    serviceAccount:
+      annotations: {}
+      automountServiceAccountToken: true
+      create: true
+      name: ""
+    serviceGrpc:
+      additionalHeadless: false
+      annotations: {}
+      clusterIP: ""
+      externalTrafficPolicy: Cluster
+      extraPorts: []
+      headless:
+        annotations: {}
+      labelSelectorsOverride: {}
+      loadBalancerIP: ""
+      loadBalancerSourceRanges: []
+      nodePorts:
+        grpc: ""
+      ports:
+        grpc: 10901
+      type: ClusterIP
+    sidecars: []
+    startupProbe:
+      enabled: false
+      failureThreshold: 15
+      initialDelaySeconds: 5
+      periodSeconds: 5
+      successThreshold: 1
+      timeoutSeconds: 1
+    stores: []
+    tolerations: []
+    topologySpreadConstraints: []
+    updateStrategy:
+      type: RollingUpdate
+  queryFrontend:
+    affinity: {}
+    args: []
+    automountServiceAccountToken: true
+    autoscaling:
+      enabled: false
+      maxReplicas: ""
+      minReplicas: ""
+      targetCPU: ""
+      targetMemory: ""
+    command: []
+    config: ""
+    containerSecurityContext:
+      allowPrivilegeEscalation: false
+      enabled: true
+      readOnlyRootFilesystem: true
+      runAsNonRoot: true
+      runAsUser: 1001
+    customLivenessProbe: {}
+    customReadinessProbe: {}
+    customStartupProbe: {}
+    dnsConfig: {}
+    dnsPolicy: ""
+    enabled: false
+    existingConfigmap: ""
+    extraEnvVars: []
+    extraEnvVarsCM: ""
+    extraEnvVarsSecret: ""
+    extraFlags: []
+    extraVolumeMounts: []
+    extraVolumes: []
+    hostAliases: []
+    ingress:
+      annotations: {}
+      apiVersion: ""
+      enabled: false
+      extraHosts: []
+      extraRules: []
+      extraTls: []
+      hostname: thanos.local
+      ingressClassName: ""
+      path: /
+      pathType: ImplementationSpecific
+      secrets: []
+      selfSigned: false
+      tls: false
+    initContainers: []
+    lifecycleHooks: {}
+    livenessProbe:
+      enabled: true
+      failureThreshold: 6
+      initialDelaySeconds: 30
+      periodSeconds: 10
+      successThreshold: 1
+      timeoutSeconds: 30
+    logFormat: logfmt
+    logLevel: info
+    nodeAffinityPreset:
+      key: ""
+      type: ""
+      values: []
+    nodeSelector: {}
+    pdb:
+      create: false
+      maxUnavailable: ""
+      minAvailable: 1
+    podAffinityPreset: ""
+    podAnnotations: {}
+    podAntiAffinityPreset: soft
+    podLabels: {}
+    podSecurityContext:
+      enabled: true
+      fsGroup: 1001
+    priorityClassName: ""
+    pspEnabled: false
+    rbac:
+      create: false
+      rules: []
+    readinessProbe:
+      enabled: true
+      failureThreshold: 6
+      initialDelaySeconds: 30
+      periodSeconds: 10
+      successThreshold: 1
+      timeoutSeconds: 30
+    replicaCount: 1
+    resources:
+      limits: {}
+      requests: {}
+    schedulerName: ""
+    service:
+      annotations: {}
+      clusterIP: ""
+      externalTrafficPolicy: Cluster
+      extraPorts: []
+      labelSelectorsOverride: {}
+      labels: {}
+      loadBalancerIP: ""
+      loadBalancerSourceRanges: []
+      nodePorts:
+        http: ""
+      ports:
+        http: 9090
+      type: ClusterIP
+    serviceAccount:
+      annotations: {}
+      automountServiceAccountToken: true
+      create: true
+      name: ""
+    sidecars: []
+    startupProbe:
+      enabled: false
+      failureThreshold: 15
+      initialDelaySeconds: 5
+      periodSeconds: 5
+      successThreshold: 1
+      timeoutSeconds: 1
+    tolerations: []
+    topologySpreadConstraints: []
+    updateStrategy:
+      type: RollingUpdate
+  receive:
+    affinity: {}
+    args: []
+    automountServiceAccountToken: true
+    autoscaling:
+      enabled: false
+      maxReplicas: ""
+      minReplicas: ""
+      targetCPU: ""
+      targetMemory: ""
+    command: []
+    config: []
+    containerSecurityContext:
+      allowPrivilegeEscalation: false
+      enabled: true
+      readOnlyRootFilesystem: true
+      runAsNonRoot: true
+      runAsUser: 1001
+    customLivenessProbe: {}
+    customReadinessProbe: {}
+    customStartupProbe: {}
+    dnsConfig: {}
+    dnsPolicy: ""
+    enabled: false
+    existingConfigmap: ""
+    extraEnvVars: []
+    extraEnvVarsCM: ""
+    extraEnvVarsSecret: ""
+    extraFlags: []
+    extraVolumeMounts: []
+    extraVolumes: []
+    grpc:
+      server:
+        tls:
+          autoGenerated: false
+          ca: ""
+          cert: ""
+          enabled: false
+          existingSecret: {}
+          key: ""
+    hostAliases: []
+    ingress:
+      annotations: {}
+      apiVersion: ""
+      enabled: false
+      extraHosts: []
+      extraRules: []
+      extraTls: []
+      hostname: thanos-receive.local
+      ingressClassName: ""
+      path: /
+      pathType: ImplementationSpecific
+      secrets: []
+      selfSigned: false
+      tls: false
+    initContainers: []
+    lifecycleHooks: {}
+    livenessProbe:
+      enabled: true
+      failureThreshold: 6
+      initialDelaySeconds: 30
+      periodSeconds: 10
+      successThreshold: 1
+      timeoutSeconds: 30
+    logFormat: logfmt
+    logLevel: info
+    mode: standalone
+    nodeAffinityPreset:
+      key: ""
+      type: ""
+      values: []
+    nodeSelector: {}
+    pdb:
+      create: false
+      maxUnavailable: ""
+      minAvailable: 1
+    persistence:
+      accessModes:
+      - ReadWriteOnce
+      annotations: {}
+      enabled: true
+      existingClaim: ""
+      size: 8Gi
+      storageClass: ""
+    podAffinityPreset: ""
+    podAnnotations: {}
+    podAntiAffinityPreset: soft
+    podLabels: {}
+    podManagementPolicy: OrderedReady
+    podSecurityContext:
+      enabled: true
+      fsGroup: 1001
+    priorityClassName: ""
+    readinessProbe:
+      enabled: true
+      failureThreshold: 6
+      initialDelaySeconds: 30
+      periodSeconds: 10
+      successThreshold: 1
+      timeoutSeconds: 30
+    replicaCount: 1
+    replicaLabel: replica
+    replicationFactor: 1
+    resources:
+      limits: {}
+      requests: {}
+    schedulerName: ""
+    service:
+      additionalHeadless: false
+      annotations: {}
+      clusterIP: ""
+      externalTrafficPolicy: Cluster
+      extraPorts: []
+      headless:
+        annotations: {}
+      labelSelectorsOverride: {}
+      labels: {}
+      loadBalancerIP: ""
+      loadBalancerSourceRanges: []
+      nodePorts:
+        grpc: ""
+        http: ""
+        remote: ""
+      ports:
+        grpc: 10901
+        http: 10902
+        remote: 19291
+      type: ClusterIP
+    serviceAccount:
+      annotations: {}
+      automountServiceAccountToken: true
+      create: true
+      name: ""
+    sidecars: []
+    startupProbe:
+      enabled: false
+      failureThreshold: 15
+      initialDelaySeconds: 5
+      periodSeconds: 5
+      successThreshold: 1
+      timeoutSeconds: 1
+    statefulsetLabels: {}
+    tolerations: []
+    topologySpreadConstraints: []
+    tsdbRetention: 15d
+    updateStrategy:
+      type: RollingUpdate
+  receiveDistributor:
+    affinity: {}
+    args: []
+    automountServiceAccountToken: true
+    autoscaling:
+      enabled: false
+      maxReplicas: ""
+      minReplicas: ""
+      targetCPU: ""
+      targetMemory: ""
+    command: []
+    containerSecurityContext:
+      allowPrivilegeEscalation: false
+      enabled: true
+      readOnlyRootFilesystem: true
+      runAsNonRoot: true
+      runAsUser: 1001
+    customLivenessProbe: {}
+    customReadinessProbe: {}
+    customStartupProbe: {}
+    dnsConfig: {}
+    dnsPolicy: ""
+    enabled: false
+    extraEnvVars: []
+    extraEnvVarsCM: ""
+    extraEnvVarsSecret: ""
+    extraFlags: []
+    extraVolumeMounts: []
+    extraVolumes: []
+    hostAliases: []
+    initContainers: []
+    lifecycleHooks: {}
+    livenessProbe:
+      enabled: true
+      failureThreshold: 6
+      initialDelaySeconds: 30
+      periodSeconds: 10
+      successThreshold: 1
+      timeoutSeconds: 30
+    logFormat: logfmt
+    logLevel: info
+    nodeAffinityPreset:
+      key: ""
+      type: ""
+      values: []
+    nodeSelector: {}
+    pdb:
+      create: false
+      maxUnavailable: ""
+      minAvailable: 1
+    podAffinityPreset: ""
+    podAnnotations: {}
+    podAntiAffinityPreset: soft
+    podLabels: {}
+    podSecurityContext:
+      enabled: true
+      fsGroup: 1001
+    priorityClassName: ""
+    readinessProbe:
+      enabled: true
+      failureThreshold: 6
+      initialDelaySeconds: 30
+      periodSeconds: 10
+      successThreshold: 1
+      timeoutSeconds: 30
+    replicaCount: 1
+    replicaLabel: replica
+    replicationFactor: 1
+    resources:
+      limits: {}
+      requests: {}
+    schedulerName: ""
+    serviceAccount:
+      annotations: {}
+      automountServiceAccountToken: true
+      create: true
+      name: ""
+    sidecars: []
+    startupProbe:
+      enabled: false
+      failureThreshold: 15
+      initialDelaySeconds: 5
+      periodSeconds: 5
+      successThreshold: 1
+      timeoutSeconds: 1
+    tolerations: []
+    topologySpreadConstraints: []
+    updateStrategy:
+      type: RollingUpdate
+  ruler:
+    affinity: {}
+    alertmanagers: []
+    alertmanagersConfig: ""
+    args: []
+    automountServiceAccountToken: true
+    autoscaling:
+      enabled: false
+      maxReplicas: ""
+      minReplicas: ""
+      targetCPU: ""
+      targetMemory: ""
+    clusterName: ""
+    command: []
+    config: ""
+    containerSecurityContext:
+      allowPrivilegeEscalation: false
+      enabled: true
+      readOnlyRootFilesystem: true
+      runAsNonRoot: true
+      runAsUser: 1001
+    customLivenessProbe: {}
+    customReadinessProbe: {}
+    customStartupProbe: {}
+    dnsConfig: {}
+    dnsDiscovery:
+      enabled: true
+    dnsPolicy: ""
+    enabled: false
+    evalInterval: 1m
+    existingConfigmap: ""
+    extraEnvVars: []
+    extraEnvVarsCM: ""
+    extraEnvVarsSecret: ""
+    extraFlags: []
+    extraVolumeMounts: []
+    extraVolumes: []
+    hostAliases: []
+    ingress:
+      annotations: {}
+      apiVersion: ""
+      enabled: false
+      extraHosts: []
+      extraRules: []
+      extraTls: []
+      hostname: thanos-ruler.local
+      ingressClassName: ""
+      path: /
+      pathType: ImplementationSpecific
+      secrets: []
+    initContainers: []
+    lifecycleHooks: {}
+    livenessProbe:
+      enabled: true
+      failureThreshold: 6
+      initialDelaySeconds: 30
+      periodSeconds: 10
+      successThreshold: 1
+      timeoutSeconds: 30
+    logFormat: logfmt
+    logLevel: info
+    nodeAffinityPreset:
+      key: ""
+      type: ""
+      values: []
+    nodeSelector: {}
+    pdb:
+      create: false
+      maxUnavailable: ""
+      minAvailable: 1
+    persistence:
+      accessModes:
+      - ReadWriteOnce
+      annotations: {}
+      enabled: true
+      existingClaim: ""
+      size: 8Gi
+      storageClass: ""
+    podAffinityPreset: ""
+    podAnnotations: {}
+    podAntiAffinityPreset: soft
+    podLabels: {}
+    podManagementPolicy: OrderedReady
+    podSecurityContext:
+      enabled: true
+      fsGroup: 1001
+    priorityClassName: ""
+    queryURL: ""
+    readinessProbe:
+      enabled: true
+      failureThreshold: 6
+      initialDelaySeconds: 30
+      periodSeconds: 10
+      successThreshold: 1
+      timeoutSeconds: 30
+    replicaCount: 1
+    replicaLabel: replica
+    resources:
+      limits: {}
+      requests: {}
+    schedulerName: ""
+    service:
+      additionalHeadless: false
+      annotations: {}
+      clusterIP: ""
+      externalTrafficPolicy: Cluster
+      extraPorts: []
+      headless:
+        annotations: {}
+      labelSelectorsOverride: {}
+      labels: {}
+      loadBalancerIP: ""
+      loadBalancerSourceRanges: []
+      nodePorts:
+        grpc: ""
+        http: ""
+      ports:
+        grpc: 10901
+        http: 9090
+      type: ClusterIP
+    serviceAccount:
+      annotations: {}
+      automountServiceAccountToken: true
+      create: true
+      name: ""
+    sidecars: []
+    startupProbe:
+      enabled: false
+      failureThreshold: 15
+      initialDelaySeconds: 5
+      periodSeconds: 5
+      successThreshold: 1
+      timeoutSeconds: 1
+    tolerations: []
+    topologySpreadConstraints: []
+    updateStrategy:
+      type: RollingUpdate
+  serviceAccount:
+    annotations: {}
+    automountServiceAccountToken: true
+    create: false
+    name: ""
+  storegateway:
+    affinity: {}
+    args: []
+    automountServiceAccountToken: true
+    autoscaling:
+      enabled: false
+      maxReplicas: ""
+      minReplicas: ""
+      targetCPU: ""
+      targetMemory: ""
+    command: []
+    config: ""
+    containerSecurityContext:
+      allowPrivilegeEscalation: false
+      enabled: true
+      readOnlyRootFilesystem: true
+      runAsNonRoot: true
+      runAsUser: 1001
+    customLivenessProbe: {}
+    customReadinessProbe: {}
+    customStartupProbe: {}
+    dnsConfig: {}
+    dnsPolicy: ""
+    enabled: true
+    existingConfigmap: ""
+    extraEnvVars: []
+    extraEnvVarsCM: ""
+    extraEnvVarsSecret: ""
+    extraFlags: []
+    extraVolumeMounts: []
+    extraVolumes: []
+    grpc:
+      server:
+        tls:
+          autoGenerated: false
+          ca: ""
+          cert: ""
+          enabled: false
+          existingSecret: {}
+          key: ""
+    hostAliases: []
+    ingress:
+      annotations: {}
+      apiVersion: ""
+      enabled: false
+      extraHosts: []
+      extraRules: []
+      extraTls: []
+      grpc:
+        annotations: {}
+        apiVersion: ""
+        enabled: false
+        extraHosts: []
+        extraRules: []
+        extraTls: []
+        hostname: thanos-grpc.local
+        ingressClassName: ""
+        path: /
+        pathType: ImplementationSpecific
+        secrets: []
+        selfSigned: false
+        tls: false
+      hostname: thanos-storegateway.local
+      ingressClassName: ""
+      path: /
+      pathType: ImplementationSpecific
+      secrets: []
+      selfSigned: false
+      tls: false
+    initContainers: []
+    lifecycleHooks: {}
+    livenessProbe:
+      enabled: true
+      failureThreshold: 6
+      initialDelaySeconds: 30
+      periodSeconds: 10
+      successThreshold: 1
+      timeoutSeconds: 30
+    logFormat: logfmt
+    logLevel: info
+    nodeAffinityPreset:
+      key: ""
+      type: ""
+      values: []
+    nodeSelector: {}
+    pdb:
+      create: false
+      maxUnavailable: ""
+      minAvailable: 1
+    persistence:
+      accessModes:
+      - ReadWriteOnce
+      annotations: {}
+      enabled: true
+      existingClaim: ""
+      labels: {}
+      size: 10Gi
+      storageClass: ""
+    podAffinityPreset: ""
+    podAnnotations: {}
+    podAntiAffinityPreset: soft
+    podLabels: {}
+    podManagementPolicy: OrderedReady
+    podSecurityContext:
+      enabled: true
+      fsGroup: 1001
+    priorityClassName: ""
+    readinessProbe:
+      enabled: true
+      failureThreshold: 6
+      initialDelaySeconds: 30
+      periodSeconds: 10
+      successThreshold: 1
+      timeoutSeconds: 30
+    replicaCount: 1
+    resources:
+      limits: {}
+      requests: {}
+    schedulerName: ""
+    service:
+      additionalHeadless: false
+      annotations: {}
+      clusterIP: ""
+      externalTrafficPolicy: Cluster
+      extraPorts: []
+      headless:
+        annotations: {}
+      labelSelectorsOverride: {}
+      labels: {}
+      loadBalancerIP: ""
+      loadBalancerSourceRanges: []
+      nodePorts:
+        grpc: ""
+        http: ""
+      ports:
+        grpc: 10901
+        http: 9090
+      type: ClusterIP
+    serviceAccount:
+      annotations: {}
+      automountServiceAccountToken: true
+      create: true
+      name: ""
+    sharded:
+      enabled: false
+      hashPartitioning:
+        shards: ""
+      service:
+        clusterIPs: []
+        grpc:
+          nodePorts: []
+        http:
+          nodePorts: []
+        loadBalancerIPs: []
+      timePartitioning:
+      - max: ""
+        min: ""
+    sidecars: []
+    startupProbe:
+      enabled: false
+      failureThreshold: 15
+      initialDelaySeconds: 5
+      periodSeconds: 5
+      successThreshold: 1
+      timeoutSeconds: 1
+    tolerations: []
+    topologySpreadConstraints: []
+    updateStrategy:
+      type: RollingUpdate
+  volumePermissions:
+    enabled: false
+    image:
+      digest: ""
+      pullPolicy: IfNotPresent
+      pullSecrets: []
+      registry: docker.io
+      repository: bitnami/os-shell
+      tag: 11-debian-11-r16
