@@ -89,14 +89,6 @@ thanos:
         memory: 32Gi
         cpu: 1000m
     
-    tolerations:
-      - effect: NoSchedule
-        key: indico.io/highmem
-        operator: Exists
-
-    nodeSelector:
-      node_group: highmem-workers
-
     sharded:
       enabled: true
       hashPartitioning:
