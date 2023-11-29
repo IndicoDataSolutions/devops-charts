@@ -87,8 +87,8 @@ thanos:
     
     resources:
       requests:
-        memory: 64Gi
-        cpu: 2000m
+        memory: 16Gi
+        cpu: 1000m
       
     nodeSelector:
       node_group: highmem-workers
@@ -96,7 +96,7 @@ thanos:
     sharded:
       enabled: true
       hashPartitioning:
-        shards: 8
+        shards: 4
 
     persistence:
       enabled: true
