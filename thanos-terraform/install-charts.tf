@@ -89,7 +89,12 @@ thanos:
       requests:
         memory: 16Gi
         cpu: 1000m
-      
+    
+    tolerations:
+      - effect: NoSchedule
+        key: indico.io/highmem
+        operator: Exists
+
     nodeSelector:
       node_group: highmem-workers
 
