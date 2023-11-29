@@ -72,6 +72,9 @@ thanos:
     requests:
       memory: 64Gi
       cpu: 2000m
+    
+    nodeSelector:
+      node_group: highmem
 
     tolerations:
       - effect: NoSchedule
