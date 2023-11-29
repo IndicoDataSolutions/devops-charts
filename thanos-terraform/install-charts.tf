@@ -7,7 +7,7 @@ resource "helm_release" "thanos-pre-reqs" {
 
 resource "helm_release" "thanos" {
   depends_on        = [helm_release.thanos-pre-reqs]
-  name              = "thanos"
+  name              = "t"
   chart             = "thanos"
   repository        = "./helm-charts"
   dependency_update = true
