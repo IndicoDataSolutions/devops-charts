@@ -1,6 +1,6 @@
 pipeline:
   name: devops-charts
-  identifier: devops-charts
+  identifier: devopscharts
   projectIdentifier: Devops
   orgIdentifier: default
   tags: {}
