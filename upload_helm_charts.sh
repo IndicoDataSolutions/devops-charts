@@ -26,7 +26,6 @@ done
 
 echo "harborprod https://harbor.devops.indico.io/chartrepo/indico-charts" >> .helm_repo_map
 helm registry login --username $USERNAME --password $PASSWORD  https://harbor.devops.indico.io/indico-charts
-helm registry login --username $CRUNCHY_USERNAME --password $CRUNCHY_PASSWORD registry.crunchydata.com/crunchydata
 
 if [ -d ".built_local_charts" ]; then
   rm -rf .built_local_charts 
