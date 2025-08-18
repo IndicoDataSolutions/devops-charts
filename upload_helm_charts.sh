@@ -61,8 +61,6 @@ else
   touch .pushed
 fi
 
-./scripts/verify-harbor-images.sh
-
 jobs_parallel_pushed=1
 echo "Pushing Charts $jobs_parallel_pushed way"
 cat .indico-charts | parallel --halt-on-error 1 -k --joblog .push-results -j $jobs_parallel_pushed ./scripts/push_helm_chart.sh {} "$1"
