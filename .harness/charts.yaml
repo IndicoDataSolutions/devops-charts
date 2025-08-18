@@ -67,5 +67,4 @@ pipeline:
                             cpu: "4"
             when:
               pipelineStatus: Success
-              condition: (<+trigger.event> == "PUSH" || <+trigger.payload.ref> =^ "refs/tags/")
   allowStageExecutions: true
