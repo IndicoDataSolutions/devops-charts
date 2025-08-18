@@ -47,20 +47,14 @@ pipeline:
                           helm version
                           helm plugin install https://github.com/chartmuseum/helm-push --version 0
                           helm plugin install https://github.com/nikhilsbhat/helm-images
-                          helm repo add --username admin --password $CHARTMUSEUM_PASSWORD harborprod https://harbor.devops.indico.io/chartrepo/indico-charts
                           export DRONE_TAG=<+<+codebase.tag>?<+codebase.tag>:"">
                           ./upload_helm_charts.sh "<+<+codebase.branch>?<+codebase.branch>:<+codebase.tag>>-<+codebase.commitSha.substring(0,8)>"
                         envVariables:
                           PASSWORD: <+secrets.getValue("account.hashicorpvault://vaulttoolsdrone/harbor-push-token#password")>
                           USERNAME: <+secrets.getValue("account.hashicorpvault://vaulttoolsdrone/harbor-push-token#username")>
-                          CM_PASSWORD: <+secrets.getValue("account.hashicorpvault://vaulttoolsdrone/cm#password")>
-                          CM_USERNAME: <+secrets.getValue("account.hashicorpvault://vaulttoolsdrone/cm#username")>
                           PYTHONUNBUFFERED: "1"
                           DRONE_BRANCH: <+codebase.branch>
                           HELM_EXPERIMENTAL_OCI: "1"
-                          CHARTMUSEUM_PASSWORD: <+secrets.getValue("CM_PASSWORD")>
-                          CRUNCHY_PASSWORD: <+secrets.getValue("account.hashicorpvault://vaulttoolsdrone/crunchy_sa#password")>
-                          CRUNCHY_USERNAME: <+secrets.getValue("account.hashicorpvault://vaulttoolsdrone/crunchy_sa#username")>
                         resources:
                           limits:
                             memory: 20G
