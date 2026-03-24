@@ -1,5 +1,0 @@
-grafana-operator:
-  enabled: true
-
-vault-secrets-operator:
-  enabled: true

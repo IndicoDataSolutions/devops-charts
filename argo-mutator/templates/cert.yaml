@@ -12,7 +12,7 @@ spec:
     -  {{ include "argo-mutator.fullname" . }}.{{ .Release.Namespace }}.svc
   commonName: {{ include "argo-mutator.fullname" . }}.{{ .Release.Namespace }}.svc
   secretName: {{ include "argo-mutator.fullname" . }}
-  duration: 87600h
+  duration: 8760h
   renewBefore: 720h
   issuerRef:
     name: selfsigned-issuer

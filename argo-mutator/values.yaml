@@ -4,9 +4,6 @@
 
 replicaCount: 2
 
-admissionController:
-  certificateName: adm-argo-mutator
-
 image:
   repository: harbor.devops.indico.io/indico/devops-argo-mutator
   pullPolicy: Always

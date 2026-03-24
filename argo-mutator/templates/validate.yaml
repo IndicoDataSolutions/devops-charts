@@ -3,7 +3,7 @@ kind: ValidatingWebhookConfiguration
 apiVersion: admissionregistration.k8s.io/v1
 metadata:
   annotations:
-    cert-manager.io/inject-ca-from: {{ .Release.Namespace }}/{{ .Values.admissionController.certificateName }}
+    cert-manager.io/inject-ca-from: {{ .Release.Namespace }}/{{ include "argo-mutator.fullname" . }}
   name: {{ include "argo-mutator.fullname" . }}-validating-webhook
 webhooks:
   - name: {{ .Values.validate.serviceName }}.{{ .Release.Namespace }}.svc
